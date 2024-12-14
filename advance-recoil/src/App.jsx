@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { jobsAtom, messagingAtom, networkAtom, notificationsAtom } from "./atoms";
+import { getNotificationSelector, jobsAtom, messagingAtom, networkAtom, notificationsAtom } from "./atoms";
 import { RecoilRoot, useRecoilStoreID, useRecoilValue} from "recoil";
 
 function App(){
@@ -15,7 +15,7 @@ function MainApp(){
     const jobsNotificationsCount = useRecoilValue(jobsAtom);
     const notificationCount = useRecoilValue(notificationsAtom);
     const messageNotificationCount = useRecoilValue(messagingAtom);
-
+    const getNofitificationCount = useRecoilValue(getNotificationSelector);
 
     return (
         <div>
@@ -26,7 +26,7 @@ function MainApp(){
             <button>Messaging ({messageNotificationCount >=100?"99+": messageNotificationCount})</button>
             <button>Notifications ({notificationCount >=100? "99+": notificationCount})</button>
 
-            <button>Me</button>
+            <button>Me ({getNofitificationCount>=100?"99+" : getNotificationSelector})</button>
 
         </div>
     )
